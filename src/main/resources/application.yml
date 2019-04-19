@@ -1,2 +1,23 @@
 server:
   port: 8090
+
+# 数据源配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hero?serverTimezone=UTC&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: admin
+    dbcp2:
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+
+# mybatis配置
+mybatis:
+  config-location: classpath:mybatis-config.xml    # mybatis配置文件所在路径
+  type-aliases-package: com.spring.hero.mapper            # 定义所有操作类的别名所在包
+  mapper-locations:                                     # 所有的mapper映射文件
+  - classpath:mybatis/*.xml
