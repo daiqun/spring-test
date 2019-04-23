@@ -1,7 +1,6 @@
 server:
   port: 8090
 
-# 数据源配置
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -15,9 +14,8 @@ spring:
       max-total: 5
       max-wait-millis: 200
 
-# mybatis配置
 mybatis:
-  config-location: classpath:mybatis-config.xml    # mybatis配置文件所在路径
-  type-aliases-package: com.spring.hero.mapper            # 定义所有操作类的别名所在包
-  mapper-locations:                                     # 所有的mapper映射文件
+  config-location: classpath:mybatis-config.xml
+  type-aliases-package: com.spring.hero.mapper
+  mapper-locations:
   - classpath:mybatis/*.xml
