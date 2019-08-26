@@ -8,7 +8,6 @@ import com.spring.hero.utils.EncodeUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author daiqun
@@ -24,8 +23,8 @@ public class UserServiceImpl implements UserService {
     public User userLogin(String username, String password) {
         User user = userMapper.findByName(username);
         String pass = EncodeUtils.encodePassword(password);
-        if (!pass.equals(user.getPassword())) {
-            throw new BusinessException("用户名或密码错误");
+        if (user == null || !pass.equals(user.getPassword())) {
+            throw new BusinessException("用户名不存在或账号密码错误");
         }
         return user;
     }
