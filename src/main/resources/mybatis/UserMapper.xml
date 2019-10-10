@@ -4,13 +4,26 @@
 <mapper namespace="com.spring.hero.mapper.UserMapper">
 
     <sql id="USER_LIST">
-      id, username, passWord
+      id, username, password, avatar
     </sql>
 
-    <select id="findByName" resultType="User">
+    <resultMap type="com.spring.hero.pojo.User" id="userMap">
+        <result column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="avatar" property="avatar"/>
+    </resultMap>
+
+    <select id="findByName" resultType="com.spring.hero.pojo.User">
       SELECT
         <include refid="USER_LIST"/>
       FROM core.users
       WHERE username = #{username};
+    </select>
+
+    <select id="findAll" resultMap="userMap">
+        SELECT
+        <include refid="USER_LIST"/>
+        FROM core.users
     </select>
 </mapper>

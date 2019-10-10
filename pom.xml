@@ -58,6 +58,11 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 
+		<!--add elasticsearch repository-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+		</dependency>
 
 		<!--add swagger repository-->
         <dependency>
@@ -98,9 +103,24 @@
             <version>RELEASE</version>
         </dependency>
 
+		<!--orika-->
+		<dependency>
+			<groupId>ma.glasnost.orika</groupId>
+			<artifactId>orika-core</artifactId>
+			<version>1.4.2</version><!-- or latest version -->
+		</dependency>
+
     </dependencies>
 
 	<build>
+		<!--<resources>-->
+			<!--<resource>-->
+				<!--<directory>src/main/java</directory>-->
+				<!--<includes>-->
+					<!--<include>**/*.xml</include>-->
+				<!--</includes>-->
+			<!--</resource>-->
+		<!--</resources>-->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

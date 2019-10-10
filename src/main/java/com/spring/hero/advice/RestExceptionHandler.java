@@ -33,6 +33,6 @@ public class RestExceptionHandler {
 
         }
 
-        return new Result(Boolean.FALSE, e.getMessage());
+        return new Result("error", e.getMessage());
     }
 }

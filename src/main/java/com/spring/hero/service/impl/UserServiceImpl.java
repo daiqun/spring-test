@@ -8,6 +8,7 @@ import com.spring.hero.utils.EncodeUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author daiqun
@@ -27,5 +28,10 @@ public class UserServiceImpl implements UserService {
             throw new BusinessException("用户名不存在或账号密码错误");
         }
         return user;
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userMapper.findAll();
     }
 }

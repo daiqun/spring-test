@@ -1,6 +1,5 @@
 package com.spring.hero.handler;
 
-import com.spring.hero.constant.Constants;
 import com.spring.hero.pojo.User;
 
 import java.util.HashMap;
@@ -96,21 +95,21 @@ public class AppContext {
     }
 
     public User getUser() {
-        return (User) values.get(Constants.APP_CONTEXT_USER);
+        return (User) values.get("APP_CONTEXT_USER");
     }
 
     public String getUserName() {
-        User user = (User) values.get(Constants.APP_CONTEXT_USER);
+        User user = (User) values.get("APP_CONTEXT_USER");
 
         if (user != null) {
             return user.getUsername();
         }
 
-        return Constants.STING_EMPTY;
+        return "";
     }
 
     public Long getUserId() {
-        User user = (User) values.get(Constants.APP_CONTEXT_USER);
+        User user = (User) values.get("APP_CONTEXT_USER");
 
         if (user != null) {
             return user.getId();

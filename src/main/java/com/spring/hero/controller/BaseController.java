@@ -27,7 +27,7 @@ public class BaseController {
     @ExceptionHandler(Exception.class)
     public Result handleException(Exception ex) {
         logger.error(ex.getMessage());
-        Result result = new Result(Boolean.FALSE, ex.getMessage());
+        Result result = new Result("error", ex.getMessage());
         return result;
     }
 
@@ -52,7 +52,7 @@ public class BaseController {
             return user.getUsername();
         }
 
-        return Constants.STING_EMPTY;
+        return "";
     }
 
     /**

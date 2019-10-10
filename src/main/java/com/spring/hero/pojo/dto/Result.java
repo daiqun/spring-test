@@ -6,15 +6,27 @@ package com.spring.hero.pojo.dto;
  */
 public class Result {
 
-    private Boolean success;
+    private String status;
     private String message;
 
-    public Boolean getSuccess() {
-        return success;
+    public Result() {
     }
 
-    public void setSuccess(Boolean success) {
-        this.success = success;
+    public Result(String status, String message) {
+        this.status = status;
+        this.message = message;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public static Result getInstance(String status, String message) {
+        return new Result(status, message);
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getMessage() {
@@ -22,14 +34,6 @@ public class Result {
     }
 
     public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public Result() {
-    }
-
-    public Result(Boolean success, String message) {
-        this.success = success;
         this.message = message;
     }
 }

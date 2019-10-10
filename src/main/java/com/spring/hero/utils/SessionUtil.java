@@ -1,6 +1,5 @@
 package com.spring.hero.utils;
 
-import com.spring.hero.constant.Constants;
 import com.spring.hero.controller.UserController;
 import com.spring.hero.handler.AppContext;
 import org.slf4j.Logger;
@@ -22,7 +21,7 @@ public class SessionUtil {
      * @return
      */
     private static Object getSessionInThread() {
-        Object session = AppContext.getContext().getObject(Constants.APP_CONTEXT_SESSION);
+        Object session = AppContext.getContext().getObject("APP_CONTEXT_SESSION");
 
         return session;
     }
@@ -41,13 +40,13 @@ public class SessionUtil {
         }
 
         try {
-            Class<?>[] param = new Class[Constants.SESSION_PARAM_NUMBER];
-            param[Constants.INT_INITIAL_VALUE] = String.class;
-            param[Constants.INT_NUMBER_ONE] = Object.class;
-            Method method = session.getClass().getMethod(Constants.SESSION_METHOD_SETATTRIBUTE, param);
-            Object[] objects = new Object[Constants.SESSION_PARAM_NUMBER];
-            objects[Constants.INT_INITIAL_VALUE] = key;
-            objects[Constants.INT_NUMBER_ONE] = object;
+            Class<?>[] param = new Class[2];
+            param[0] = String.class;
+            param[1] = Object.class;
+            Method method = session.getClass().getMethod("setAttribute", param);
+            Object[] objects = new Object[2];
+            objects[0] = key;
+            objects[1] = object;
             method.invoke(session, objects);
         } catch (Exception ex) {
             logger.error(ex.getMessage());
@@ -68,11 +67,11 @@ public class SessionUtil {
         }
 
         try {
-            Class<?>[] param = new Class[Constants.SESSION_PARAM_NUMBER_ONE];
-            param[Constants.INT_INITIAL_VALUE] = String.class;
-            Method method = session.getClass().getMethod(Constants.SESSION_METHOD_GETATTRIBUTE, param);
-            Object[] objects = new Object[Constants.SESSION_PARAM_NUMBER_ONE];
-            objects[Constants.INT_INITIAL_VALUE] = key;
+            Class<?>[] param = new Class[1];
+            param[0] = String.class;
+            Method method = session.getClass().getMethod("getAttribute", param);
+            Object[] objects = new Object[1];
+            objects[0] = key;
             Object returnValue = method.invoke(session, objects);
 
             return returnValue;
@@ -96,11 +95,11 @@ public class SessionUtil {
         }
 
         try {
-            Class<?>[] param = new Class[Constants.SESSION_PARAM_NUMBER_ONE];
-            param[Constants.INT_INITIAL_VALUE] = String.class;
-            Method method = session.getClass().getMethod(Constants.SESSION_METHOD_REMOVE_ATTRIBUTE, param);
-            Object[] objects = new Object[Constants.SESSION_PARAM_NUMBER_ONE];
-            objects[Constants.INT_INITIAL_VALUE] = key;
+            Class<?>[] param = new Class[1];
+            param[0] = String.class;
+            Method method = session.getClass().getMethod("removeAttribute", param);
+            Object[] objects = new Object[1];
+            objects[0] = key;
             method.invoke(session, objects);
         } catch (Exception ex) {
             logger.error(ex.getMessage());
@@ -118,7 +117,7 @@ public class SessionUtil {
         }
 
         try {
-            Method method = session.getClass().getMethod(Constants.SESSION_METHOD_INVALIDATE);
+            Method method = session.getClass().getMethod("invalidate");
             method.invoke(session);
         } catch (Exception ex) {
             logger.error(ex.getMessage());
